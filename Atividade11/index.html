@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>Atividade 11</title>
+		<script>
+			/*1.Crie uma função construtora para o Retângulo receber(x,y) ou seja, base e altura,
+				com um método para calcular a área. Criar um objeto e executar o método que calcula 
+				a área. Não  precisa utilizar get e set na função construtora.
+				
+			  2.Crie uma nova função tipo Conta, com as propriedades nome correntista, banco, numero 
+			  da conta e saldo. Crie utilizando herança duas novas funções: Corrente com Saldo 
+			  Especial e Poupanca com Juros, Data Vencimento. Receber os dados via get e set. 
+			  Criar um objeto de cada uma: Corrente e Poupanca e mostrar os seus dados.
+			*/
+
+			//1
+			function Retangulo(x, y){
+				this.base = x;
+				this.altura = y;
+				this.CalcArea = function(){
+					return(x * y);
+				}
+			}
+
+			var ret = new Retangulo(2, 5);
+
+			alert("Área do retângulo: " + ret.CalcArea());
+			
+			//2
+			function Conta(nomeCorrentista, banco, numeroConta, saldo){
+				this.nomeCorrentista = nomeCorrentista;
+				this.banco = banco;
+				this.numeroConta = numeroConta;
+				this.saldo = saldo;
+			}
+			
+			function Corrente(){
+				var SaldoEspec;
+				
+				this.getSaldoEspec = function(){
+					return SaldoEspec;
+				};
+				
+				this.setSaldoEspec = function(value){
+					SaldoEspec = value;
+				};
+			}
+			
+			function Poupanca(){
+				var Juros, DataVenc;
+				
+				this.getJuros = function(){
+					return Juros;
+				};
+				
+				this.setJuros = function(value){
+					Juros = value;
+				};
+				
+				this.getDataVenc = function(){
+					return DataVenc;
+				};
+				
+				this.setDataVenc = function(value){
+					DataVenc = value;
+				};
+			}
+			
+			Corrente.prototype = new Conta("Douglas", 77, 1234, 500.00);
+			var contaCorrente = new Corrente();
+			contaCorrente.setSaldoEspec(200);
+			
+			Poupanca.prototype = new Conta("Denilce", 77, 5678, 5900.00);
+			var contaPoupanca = new Poupanca();
+			contaPoupanca.setJuros(1.00);
+			contaPoupanca.setDataVenc("18/05/2022");
+			
+			alert("Correntista: " + contaCorrente.nomeCorrentista +
+				  "\nBanco: " + contaCorrente.banco +
+				  "\nNúmero Conta: " + contaCorrente.numeroConta +	
+				  "\nSaldo: " + contaCorrente.saldo + 
+				  "\nSaldo Especial: " + contaCorrente.getSaldoEspec());
+				 
+			alert("Correntista: " + contaPoupanca.nomeCorrentista +
+				  "\nBanco: " + contaPoupanca.banco +
+				  "\nNúmero Conta: " + contaPoupanca.numeroConta +	
+				  "\nSaldo: " + contaPoupanca.saldo + 
+				  "\nJuros: " + contaPoupanca.getJuros() +
+				  "\nDataVenc: " + contaPoupanca.getDataVenc());
+		</script>
+	</head>
+
+	<body>
+	</body>
+</html>
